@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "pvptils",
+  "version": "1.0.0",
+  "name": "PvPTils",
+  "description": "A mod to add unique & awesome features, to hopefully make your PvP experience cleaner :D",
+  "authors": ["aubreyrs"],
+  "contact": {
+    "repo": "https://github.com/aubreyrs/PvPTils"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/pvptils/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "cat.aubrey.pvptils.client.Pvptils"
+    ],
+    "modmenu": [
+      "cat.aubrey.pvptils.client.config.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "pvptils.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "1.21.*",
+    "cloth-config": ">=11.0.99"
+  }
+}
