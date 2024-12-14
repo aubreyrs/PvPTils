@@ -7,8 +7,10 @@
     "ClientPlayerInteractionManagerMixin",
     "ClientWorldMixin",
     "WorldRendererMixin",
-    "EntityRenderDispatcherMixin"
-  ],
+    "EntityRenderDispatcherMixin",
+    "InGameHudMixin",
+    "ParticleManagerMixin"
+    ],
   "injectors": {
     "defaultRequire": 1
   }
