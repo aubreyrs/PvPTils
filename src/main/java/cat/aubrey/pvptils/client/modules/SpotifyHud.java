@@ -14,7 +14,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.text.Text;
 import cat.aubrey.pvptils.client.Config;
-import cat.aubrey.pvptils.client.Config.HudPosition;
+import cat.aubrey.pvptils.client.config.modules.SpotifyConfig;
 import cat.aubrey.pvptils.client.Pvptils;
 import net.minecraft.client.util.Window;
 
@@ -208,22 +208,22 @@ public class SpotifyHud {
         int textHeight = client.textRenderer.fontHeight;
 
         int x, y;
-        HudPosition position = HudPosition.values()[Config.get().getSpotifyHudPosition()];
+        int position = Config.get().getSpotifyHudPosition();
 
         switch (position) {
-            case TOP_LEFT:
+            case 2:
                 x = PADDING;
                 y = PADDING;
                 break;
-            case TOP_RIGHT:
+            case 3:
                 x = screenWidth - textWidth - PADDING;
                 y = PADDING;
                 break;
-            case BOTTOM_RIGHT:
+            case 1:
                 x = screenWidth - textWidth - PADDING;
                 y = screenHeight - textHeight - PADDING;
                 break;
-            case BOTTOM_LEFT:
+            case 0:
             default:
                 x = PADDING;
                 y = screenHeight - textHeight - PADDING;
