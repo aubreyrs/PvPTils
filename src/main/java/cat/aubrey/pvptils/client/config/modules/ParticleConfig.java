@@ -26,6 +26,8 @@ public class ParticleConfig implements ConfigModule {
     @Expose private boolean useRainbowEnchantedColor = false;
     @Expose private float rainbowSpeed = 1.0f;
     @Expose private boolean alwaysShowEnchantedHit = false;
+    @Expose private boolean useTransFlagColors = false;
+    @Expose private boolean useLesbianFlagColors = false;
 
     @Override
     public void save() {
@@ -65,6 +67,8 @@ public class ParticleConfig implements ConfigModule {
         this.useRainbowEnchantedColor = other.useRainbowEnchantedColor;
         this.rainbowSpeed = other.rainbowSpeed;
         this.alwaysShowEnchantedHit = other.alwaysShowEnchantedHit;
+        this.useTransFlagColors = other.useTransFlagColors;
+        this.useLesbianFlagColors = other.useLesbianFlagColors;
     }
 
     private void applyToModule() {
@@ -80,6 +84,8 @@ public class ParticleConfig implements ConfigModule {
         ParticleEffects.setUseRainbowEnchantedColor(useRainbowEnchantedColor);
         ParticleEffects.setRainbowSpeed(rainbowSpeed);
         ParticleEffects.setAlwaysShowEnchantedHit(alwaysShowEnchantedHit);
+        ParticleEffects.setUseTransFlagColors(useTransFlagColors);
+        ParticleEffects.setUseLesbianFlagColors(useLesbianFlagColors);
     }
 
     @Override
@@ -209,6 +215,33 @@ public class ParticleConfig implements ConfigModule {
                 .setSaveConsumer(value -> {
                     alwaysShowEnchantedHit = value;
                     ParticleEffects.setAlwaysShowEnchantedHit(value);
+                    save();
+                }).build());
+        category.addEntry(builder.entryBuilder()
+                .startBooleanToggle(Text.literal("Trans Flag Colors"), useTransFlagColors)
+                .setDefaultValue(false)
+                .setTooltip(Text.literal("Use trans flag colors for particles"))
+                .setSaveConsumer(value -> {
+                    useTransFlagColors = value;
+                    if (value) {
+                        useRainbowCriticalColor = false;
+                        useLesbianFlagColors = false;
+                    }
+                    ParticleEffects.setUseTransFlagColors(value);
+                    save();
+                }).build());
+
+        category.addEntry(builder.entryBuilder()
+                .startBooleanToggle(Text.literal("Lesbian Flag Colors"), useLesbianFlagColors)
+                .setDefaultValue(false)
+                .setTooltip(Text.literal("Use lesbian flag colors for particles"))
+                .setSaveConsumer(value -> {
+                    useLesbianFlagColors = value;
+                    if (value) {
+                        useRainbowCriticalColor = false;
+                        useTransFlagColors = false;
+                    }
+                    ParticleEffects.setUseLesbianFlagColors(value);
                     save();
                 }).build());
 

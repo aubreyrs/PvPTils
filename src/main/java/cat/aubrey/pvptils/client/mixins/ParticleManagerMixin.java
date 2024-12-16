@@ -26,7 +26,13 @@ public abstract class ParticleManagerMixin {
 
         if (parameters.getType() == ParticleTypes.CRIT) {
             particle.scale(ParticleEffects.getCriticalParticleScale());
-            if (ParticleEffects.shouldUseRainbowCriticalColor()) {
+            if (ParticleEffects.shouldUseTransFlagColors() || ParticleEffects.shouldUseLesbianFlagColors()) {
+                int color = ParticleEffects.getRainbowColor();
+                float red = ((color >> 16) & 0xFF) / 255.0F;
+                float green = ((color >> 8) & 0xFF) / 255.0F;
+                float blue = (color & 0xFF) / 255.0F;
+                particle.setColor(red, green, blue);
+            } else if (ParticleEffects.shouldUseRainbowCriticalColor()) {
                 int color = ParticleEffects.getRainbowColor();
                 float red = ((color >> 16) & 0xFF) / 255.0F;
                 float green = ((color >> 8) & 0xFF) / 255.0F;
@@ -48,7 +54,13 @@ public abstract class ParticleManagerMixin {
                         velocityZ + (Math.random() - 0.5) * 0.1);
                 if (extraParticle != null) {
                     extraParticle.scale(ParticleEffects.getCriticalParticleScale());
-                    if (ParticleEffects.shouldUseRainbowCriticalColor()) {
+                    if (ParticleEffects.shouldUseTransFlagColors() || ParticleEffects.shouldUseLesbianFlagColors()) {
+                        int color = ParticleEffects.getRainbowColor();
+                        float red = ((color >> 16) & 0xFF) / 255.0F;
+                        float green = ((color >> 8) & 0xFF) / 255.0F;
+                        float blue = (color & 0xFF) / 255.0F;
+                        extraParticle.setColor(red, green, blue);
+                    } else if (ParticleEffects.shouldUseRainbowCriticalColor()) {
                         int color = ParticleEffects.getRainbowColor();
                         float red = ((color >> 16) & 0xFF) / 255.0F;
                         float green = ((color >> 8) & 0xFF) / 255.0F;
@@ -65,7 +77,13 @@ public abstract class ParticleManagerMixin {
             }
         } else if (parameters.getType() == ParticleTypes.ENCHANTED_HIT) {
             particle.scale(ParticleEffects.getSharpnessParticleScale());
-            if (ParticleEffects.shouldUseRainbowEnchantedColor()) {
+            if (ParticleEffects.shouldUseTransFlagColors() || ParticleEffects.shouldUseLesbianFlagColors()) {
+                int color = ParticleEffects.getRainbowColor();
+                float red = ((color >> 16) & 0xFF) / 255.0F;
+                float green = ((color >> 8) & 0xFF) / 255.0F;
+                float blue = (color & 0xFF) / 255.0F;
+                particle.setColor(red, green, blue);
+            } else if (ParticleEffects.shouldUseRainbowEnchantedColor()) {
                 int color = ParticleEffects.getRainbowColor();
                 float red = ((color >> 16) & 0xFF) / 255.0F;
                 float green = ((color >> 8) & 0xFF) / 255.0F;
@@ -87,7 +105,13 @@ public abstract class ParticleManagerMixin {
                         velocityZ + (Math.random() - 0.5) * 0.1);
                 if (extraParticle != null) {
                     extraParticle.scale(ParticleEffects.getSharpnessParticleScale());
-                    if (ParticleEffects.shouldUseRainbowEnchantedColor()) {
+                    if (ParticleEffects.shouldUseTransFlagColors() || ParticleEffects.shouldUseLesbianFlagColors()) {
+                        int color = ParticleEffects.getRainbowColor();
+                        float red = ((color >> 16) & 0xFF) / 255.0F;
+                        float green = ((color >> 8) & 0xFF) / 255.0F;
+                        float blue = (color & 0xFF) / 255.0F;
+                        extraParticle.setColor(red, green, blue);
+                    } else if (ParticleEffects.shouldUseRainbowEnchantedColor()) {
                         int color = ParticleEffects.getRainbowColor();
                         float red = ((color >> 16) & 0xFF) / 255.0F;
                         float green = ((color >> 8) & 0xFF) / 255.0F;
